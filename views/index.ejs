@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Express App</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="container">
+        <h1>Express App</h1>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/users">Usuarios</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h2><%= message %></h2>
+      <p>Una aplicación web moderna con Node.js, Express, EJS y PostgreSQL</p>
+      
+      <div class="features">
+        <div class="feature-card">
+          <h3>🚀 Express.js</h3>
+          <p>Framework web rápido y minimalista para Node.js</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3>📝 EJS Templates</h3>
+          <p>Motor de plantillas para renderizado del lado del servidor</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3>🐘 PostgreSQL</h3>
+          <p>Base de datos relacional robusta y escalable</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a href="/users" class="btn btn-primary">Ver Usuarios</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+    </div>
+  </footer>
+</body>
+</html>

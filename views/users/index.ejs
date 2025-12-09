@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Express App</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="container">
+        <h1>Express App</h1>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/users">Usuarios</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h2><%= title %></h2>
+      <a href="/users/new" class="btn btn-primary">Nuevo Usuario</a>
+    </div>
+
+    <% if (users.length === 0) { %>
+      <div class="empty-state">
+        <p>No hay usuarios registrados.</p>
+        <a href="/users/new" class="btn btn-primary">Crear primer usuario</a>
+      </div>
+    <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td class="actions">
+                <a href="/users/<%= user.id %>/edit" class="btn btn-small btn-secondary">Editar</a>
+                <form action="/users/<%= user.id %>/delete" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-small btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+    </div>
+  </footer>
+</body>
+</html>
