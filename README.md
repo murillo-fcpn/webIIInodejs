@@ -2,14 +2,6 @@
 
 Aplicación web desarrollada con Node.js, Express.js, EJS y PostgreSQL.
 
-## Características
-
-- 🚀 Express.js como framework web
-- 📝 EJS como motor de plantillas
-- 🐘 PostgreSQL como base de datos
-- 🎨 Diseño moderno y responsivo
-- ✨ CRUD completo de usuarios
-
 ## Requisitos Previos
 
 - Node.js (v14 o superior)
@@ -106,16 +98,6 @@ webIIInodejs/
 └── server.js             # Punto de entrada
 ```
 
-## Endpoints
-
-- `GET /` - Página de inicio
-- `GET /users` - Lista de usuarios
-- `GET /users/new` - Formulario crear usuario
-- `POST /users` - Crear usuario
-- `GET /users/:id/edit` - Formulario editar usuario
-- `POST /users/:id` - Actualizar usuario
-- `POST /users/:id/delete` - Eliminar usuario
-
 ## Tecnologías
 
 - **Backend:** Node.js, Express.js
@@ -123,6 +105,3 @@ webIIInodejs/
 - **Template Engine:** EJS
 - **Estilos:** CSS3 (Vanilla)
 
-## Licencia
-
-ISC
