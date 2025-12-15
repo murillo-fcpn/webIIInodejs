@@ -13,7 +13,7 @@
         <h1>Express App</h1>
         <ul>
           <li><a href="/">Inicio</a></li>
-          <li><a href="/users">Usuarios</a></li>
+          <li><a href="/users">Clientes</a></li>
         </ul>
       </div>
     </nav>
@@ -22,13 +22,13 @@
   <main class="container">
     <div class="page-header">
       <h2><%= title %></h2>
-      <a href="/users/new" class="btn btn-primary">Nuevo Usuario</a>
+      <a href="/users/new" class="btn btn-primary">Nuevo Cliente</a>
     </div>
 
     <% if (users.length === 0) { %>
       <div class="empty-state">
-        <p>No hay usuarios registrados.</p>
-        <a href="/users/new" class="btn btn-primary">Crear primer usuario</a>
+        <p>No hay clientes registrados.</p>
+        <a href="/users/new" class="btn btn-primary">Crear primer cliente</a>
       </div>
     <% } else { %>
       <table class="data-table">

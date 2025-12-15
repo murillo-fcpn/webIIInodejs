@@ -3,16 +3,16 @@ const { query } = require('../config/database');
 // Get all users
 const getAllUsers = async (req, res) => {
   try {
-    const result = await query('SELECT * FROM users ORDER BY id ASC');
+    const result = await query('SELECT * FROM customers ORDER BY id ASC');
     res.render('users/index', {
-      title: 'Lista de Usuarios',
+      title: 'Lista de Clientes',
       users: result.rows
     });
   } catch (error) {
     console.error('Error fetching users:', error);
     res.status(500).render('error', {
       title: 'Error',
-      message: 'Error al obtener usuarios',
+      message: 'Error al obtener clientes',
       error: error
     });
   }
@@ -21,7 +21,7 @@ const getAllUsers = async (req, res) => {
 // Show create user form
 const showCreateForm = (req, res) => {
   res.render('users/form', {
-    title: 'Crear Usuario',
+    title: 'Crear cliente',
     user: null,
     action: '/users'
   });
@@ -32,7 +32,7 @@ const createUser = async (req, res) => {
   const { name, email } = req.body;
   try {
     await query(
-      'INSERT INTO users (name, email) VALUES ($1, $2)',
+      'INSERT INTO customres (name, email) VALUES ($1, $2)',
       [name, email]
     );
     res.redirect('/users');
@@ -40,7 +40,7 @@ const createUser = async (req, res) => {
     console.error('Error creating user:', error);
     res.status(500).render('error', {
       title: 'Error',
-      message: 'Error al crear usuario',
+      message: 'Error al crear cliente',
       error: error
     });
   }
@@ -50,16 +50,16 @@ const createUser = async (req, res) => {
 const showEditForm = async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await query('SELECT * FROM users WHERE id = $1', [id]);
+    const result = await query('SELECT * FROM customres WHERE id = $1', [id]);
     if (result.rows.length === 0) {
       return res.status(404).render('error', {
         title: 'No encontrado',
-        message: 'Usuario no encontrado',
+        message: 'Cliente no encontrado',
         error: { status: 404 }
       });
     }
     res.render('users/form', {
-      title: 'Editar Usuario',
+      title: 'Editar Cliente',
       user: result.rows[0],
       action: `/users/${id}`
     });
@@ -67,7 +67,7 @@ const showEditForm = async (req, res) => {
     console.error('Error fetching user:', error);
     res.status(500).render('error', {
       title: 'Error',
-      message: 'Error al obtener usuario',
+      message: 'Error al obtener cliente',
       error: error
     });
   }
@@ -79,7 +79,7 @@ const updateUser = async (req, res) => {
   const { name, email } = req.body;
   try {
     await query(
-      'UPDATE users SET name = $1, email = $2 WHERE id = $3',
+      'UPDATE customres SET name = $1, email = $2 WHERE id = $3',
       [name, email, id]
     );
     res.redirect('/users');
@@ -87,7 +87,7 @@ const updateUser = async (req, res) => {
     console.error('Error updating user:', error);
     res.status(500).render('error', {
       title: 'Error',
-      message: 'Error al actualizar usuario',
+      message: 'Error al actualizar cliente',
       error: error
     });
   }
@@ -97,13 +97,13 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
-    await query('DELETE FROM users WHERE id = $1', [id]);
+    await query('DELETE FROM customers WHERE id = $1', [id]);
     res.redirect('/users');
   } catch (error) {
     console.error('Error deleting user:', error);
     res.status(500).render('error', {
       title: 'Error',
-      message: 'Error al eliminar usuario',
+      message: 'Error al eliminar cliente',
       error: error
     });
   }
