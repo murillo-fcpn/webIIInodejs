@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estados de Tarea - Express App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="container">
+      <div class="page-header">
+        <h2>Estados de Tarea</h2>
+      </div>
+
+      <!-- Create Form -->
+      <div class="form-container" style="margin-bottom: 2rem">
+        <form action="/references/status-tasks" method="POST">
+          <div class="form-group">
+            <label for="name">Nuevo Estado de Tarea:</label>
+            <div style="display: flex; gap: 10px">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Ingrese nombre del estado"
+                style="flex: 1"
+              />
+              <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <% if (statusTasks.length === 0) { %>
+      <div class="empty-state">
+        <p>No hay estados de tarea registrados.</p>
+      </div>
+      <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% statusTasks.forEach(status => { %>
+          <tr>
+            <td><%= status.id %></td>
+            <td><%= status.name %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -6,6 +6,9 @@ const app = express();
 // Import routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const referencesRouter = require('./routes/references');
+const projectsRouter = require('./routes/projects');
+const tasksRouter = require('./routes/tasks');
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,6 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/references', referencesRouter);
+app.use('/projects', projectsRouter);
+app.use('/tasks', tasksRouter);
 
 // 404 handler
 app.use((req, res, next) => {

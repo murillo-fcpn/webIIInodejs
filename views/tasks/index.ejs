@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas - Express App</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container">
+    <div class="page-header">
+      <h2>Tareas</h2>
+      <a href="/tasks/new" class="btn btn-primary">Nueva Tarea</a>
+    </div>
+
+    <% if (tasks.length === 0) { %>
+      <div class="empty-state">
+        <p>No hay tareas registradas.</p>
+        <a href="/tasks/new" class="btn btn-primary">Crear primera tarea</a>
+      </div>
+    <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Proyecto</th>
+            <th>Tarea</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.forEach(task => { %>
+            <tr>
+              <td><%= task.id %></td>
+              <td><%= task.project_name %></td>
+              <td><%= task.name %></td>
+              <td><%= new Date(task.start_date).toLocaleDateString() %></td>
+              <td><%= task.end_date ? new Date(task.end_date).toLocaleDateString() : 'En progreso' %></td>
+              <td><%= task.status_name %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.render('index', {
     title: 'Bienvenido',
-    message: 'Express con EJS y PostgreSQL'
+    message: 'Sistema de Gestion de construccion.'
   });
 });
 

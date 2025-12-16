@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos de Proyecto - Express App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="container">
+      <div class="page-header">
+        <h2>Tipos de Proyecto</h2>
+      </div>
+
+      <!-- Create Form -->
+      <div class="form-container" style="margin-bottom: 2rem">
+        <form action="/references/project-types" method="POST">
+          <div class="form-group">
+            <label for="name">Nuevo Tipo de Proyecto:</label>
+            <div style="display: flex; gap: 10px">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Ingrese nombre del tipo de proyecto"
+                style="flex: 1"
+              />
+              <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <% if (projectTypes.length === 0) { %>
+      <div class="empty-state">
+        <p>No hay tipos de proyecto registrados.</p>
+      </div>
+      <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% projectTypes.forEach(type => { %>
+          <tr>
+            <td><%= type.id %></td>
+            <td><%= type.name %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+      </div>
+    </footer>
+  </body>
+</html>

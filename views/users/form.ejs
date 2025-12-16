@@ -7,17 +7,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="container">
-        <h1>Express App</h1>
-        <ul>
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/users">Usuarios</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <%- include('../partials/header') %>
 
   <main class="container">
     <div class="page-header">
@@ -53,7 +43,7 @@
 
         <div class="form-actions">
           <button type="submit" class="btn btn-primary">
-            <%= user ? 'Actualizar' : 'Crear' %> Usuario
+            <%= user ? 'Actualizar' : 'Crear' %> Cliente
           </button>
           <a href="/users" class="btn btn-secondary">Cancelar</a>
         </div>

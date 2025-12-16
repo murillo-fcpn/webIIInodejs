@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - Express App</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container">
+    <div class="page-header">
+      <h2>Proyectos</h2>
+      <a href="/projects/new" class="btn btn-primary">Nuevo Proyecto</a>
+    </div>
+
+    <% if (projects.length === 0) { %>
+      <div class="empty-state">
+        <p>No hay proyectos registrados.</p>
+        <a href="/projects/new" class="btn btn-primary">Crear primer proyecto</a>
+      </div>
+    <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Cliente</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% projects.forEach(project => { %>
+            <tr>
+              <td><%= project.id %></td>
+              <td><%= project.name %></td>
+              <td><%= project.location %></td>
+              <td><%= project.customer_name %></td>
+              <td><%= project.type_name %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Express App - Node.js + PostgreSQL</p>
+    </div>
+  </footer>
+</body>
+</html>
